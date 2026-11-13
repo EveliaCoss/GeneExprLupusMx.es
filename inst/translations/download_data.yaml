@@ -1,0 +1,52 @@
+title:
+  original: Download the large data objects of the package
+  translation: ~
+description:
+  original: |
+    The three largest objects (\code{\link{filtered_txi}}, \code{\link{dds}} and
+    \code{\link{zscore_mat}}) are not installed with the package, to keep it
+    small. They are stored as files of the GitHub release of the package, and
+    this function downloads them the first time they are used. Later calls read
+    the copy saved on your computer, so no internet connection is needed.
+  translation: ~
+arguments:
+  name:
+    original: |-
+      Name of the object: \code{"filtered_txi"}, \code{"dds"} or
+      \code{"zscore_mat"}.
+    translation: ~
+  tag:
+    original: |-
+      GitHub release that contains the files. The default is the
+      release with the data used in the lessons.
+    translation: ~
+details:
+  original: |
+    Files are saved in \code{tools::R_user_dir("GeneExprLupusMx",
+      "cache")}. Delete that folder to free space or to download them again.
+    The first download needs about 46 MB in total.
+  translation: ~
+value:
+  original: |
+    The requested object.
+  translation: ~
+note:
+  original: |
+    Several other packages (e.g., \pkg{FedData}, \pkg{admixr} and
+    \pkg{tidyfinance}) also have a function called \code{download_data()}. If
+    you load one of them together with GeneExprLupusMx, the one loaded last is
+    used. To make sure you use this one, call it as
+    \code{GeneExprLupusMx::download_data()}.
+  translation: ~
+seealso:
+  original: |
+    \code{\link{filtered_txi}}, \code{\link{dds}},
+    \code{\link{zscore_mat}}
+  translation: ~
+examples:
+  original: |
+    \dontshow{if (interactive()) withAutoprint(\{ # examplesIf}
+    filtered_txi <- download_data("filtered_txi")
+    dim(filtered_txi$counts)
+    \dontshow{\}) # examplesIf}
+  translation: ~

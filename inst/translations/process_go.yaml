@@ -1,0 +1,65 @@
+title:
+  original: Process GO Enrichment Result from a Single File
+  translation: ~
+description:
+  original: |
+    Load and analyze a single \code{.RData} file containing GO enrichment results
+    from either UP or DOWN regulated genes. Includes validation, semantic
+    similarity reduction, merging metadata, and plotting.
+  translation: ~
+arguments:
+  f:
+    original: |-
+      Character. Path to the \code{.RData} file (must include full or
+      relative path). The file must contain exactly one data frame with the
+      columns \code{go_id}, \code{term} and \code{p.adjust}.
+    translation: ~
+  direction:
+    original: |-
+      Character. Either \code{"UP"} or \code{"DOWN"} to specify
+      the type of enrichment.
+    translation: ~
+  outdir:
+    original: Character. Directory to save \code{.RData} output files.
+    translation: ~
+  figdir:
+    original: Character. Directory to save PNG plots.
+    translation: ~
+details:
+  original: |
+    Requires the Bioconductor packages \pkg{rrvgo} and
+    \pkg{org.Hs.eg.db}. Datasets with fewer than 40 unique GO terms are skipped.
+  translation: ~
+value:
+  original: |
+    Invisibly, \code{NULL}. Saves processed files and figures in
+    \code{outdir} and \code{figdir}.
+  translation: ~
+seealso:
+  original: |
+    \code{\link{reduce_go_terms}} for batch processing of multiple
+    enrichment files.
+  translation: ~
+examples:
+  original: |+
+    \donttest{
+    if (all(vapply(c("rrvgo", "org.Hs.eg.db", "dplyr", "ggplot2"),
+                   requireNamespace, logical(1), quietly = TRUE))) {
+      # Enrichment table with the columns go_id, term and p.adjust
+      go_bp <- go_celltype_results[go_celltype_results$query == "SLE_UP_moDC" &
+                                     go_celltype_results$source == "GO:BP", ]
+      go_bp <- head(go_bp[order(go_bp$p_value), ], 60)
+      go_table <- data.frame(go_id = go_bp$term_id, term = go_bp$term_name,
+                             p.adjust = go_bp$p_value)
+
+      go_dir <- file.path(tempdir(), "process_go_example")
+      dir.create(go_dir, showWarnings = FALSE)
+      f <- file.path(go_dir, "UP_GO_SLE_moDC.RData")
+      save(go_table, file = f)
+
+      process_go(f, direction = "UP", outdir = go_dir, figdir = go_dir)
+      list.files(go_dir)
+    }
+    }
+
+  translation: ~

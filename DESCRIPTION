@@ -1,0 +1,15 @@
+Package: GeneExprLupusMx.es
+Type: Translation-module
+Title: What the package does (short line)
+Version: 1.0
+Date: 2024-05-26
+Author: Who wrote it
+Maintainer: Who to complain to <yourfault@somewhere.net>
+Description: More about what it does (maybe more than one line)
+License: MIT + file LICENSE
+Language: es
+Translates: GeneExprLupusMx (== 0.1.0.9000)
+LazyData: true
+Imports: 
+  yaml
+

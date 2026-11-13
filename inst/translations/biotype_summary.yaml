@@ -1,0 +1,30 @@
+title:
+  original: Gene biotypes
+  translation: ~
+description:
+  original: |
+    Biotype of each gene in \code{filtered_txi}, used to annotate differentially
+    expressed genes as protein-coding genes (PCG) or long non-coding RNAs (lncRNA).
+  translation: ~
+format:
+  original: |
+    A data frame with 21,699 rows and 3 columns:
+    \describe{
+    \item{gene}{Gene symbol.}
+    \item{gene_biotype}{Ensembl biotype (e.g., \code{"protein_coding"}, \code{"lncRNA"}).}
+    \item{Group_biotype}{Grouped biotype: \code{PCG}, \code{lncRNA},
+    \code{Pseudogene}, \code{small ncRNAs} or \code{TEC}.}
+    }
+  translation: ~
+details:
+  original: |
+    The script that generates it is \code{data-raw/lesson4_annotations.R}.
+  translation: ~
+source:
+  original: |
+    Ensembl gene annotation.
+  translation: ~
+examples:
+  original: |
+    table(biotype_summary$Group_biotype)
+  translation: ~

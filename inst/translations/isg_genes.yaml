@@ -1,0 +1,31 @@
+title:
+  original: Interferon-stimulated genes (ISGs)
+  translation: ~
+description:
+  original: |
+    List of 423 interferon-stimulated genes, used to identify differentially
+    expressed ISGs.
+  translation: ~
+format:
+  original: |
+    A data frame with 423 rows and 1 column:
+    \describe{
+    \item{genes}{Gene symbol.}
+    }
+  translation: ~
+details:
+  original: |
+    The script that generates it is \code{data-raw/lesson4_annotations.R}.
+  translation: ~
+source:
+  original: |
+    Yu et al. (2025), Table S3: "The list of interferon-stimulated genes"
+    ({ISEXPR_0}).
+  translation: ~
+  spans:
+    '0': \ifelse{text}{doi:10.6084/m9.figshare.28353289 <https://doi.org/10.6084/m9.figshare.28353289>}{\ifelse{latex}{\href{https://doi.org/10.6084/m9.figshare.28353289}{doi:10.6084\out{\\slash{}}m9.figshare.28353289}}{\href{https://doi.org/10.6084/m9.figshare.28353289}{doi:10.6084/m9.figshare.28353289}}}
+examples:
+  original: |
+    head(isg_genes)
+    "IFI27" %in% isg_genes$genes
+  translation: ~
