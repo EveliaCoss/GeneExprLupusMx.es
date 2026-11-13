@@ -12,4 +12,5 @@ Translates: GeneExprLupusMx (== 0.1.0.9000)
 LazyData: true
 Imports: 
   yaml
-
+URL: https://github.com/EveliaCoss/GeneExprLupusMx.es
+BugReports: https://github.com/EveliaCoss/GeneExprLupusMx.es/issues
