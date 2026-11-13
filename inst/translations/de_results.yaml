@@ -1,6 +1,6 @@
 title:
   original: Differential expression results checkpoint (SLE vs Ctrl by cell type)
-  translation: ~
+  translation: Resultados guardados de la expresión diferencial (SLE vs Ctrl por tipo celular)
 description:
   original: |
     \pkg{DESeq2} results of the comparison between SLE patients and healthy
@@ -8,7 +8,12 @@ description:
     diferencialmente expresados entre pacientes y controles"
     (\href{https://eveliacoss.github.io/GeneExprLupusMx/articles/l3_DEGs_es.html}{l3_DEGs_es}). Starting point of the functional
     enrichment lesson.
-  translation: ~
+  translation: |
+    Resultados de \pkg{DESeq2} de la comparación entre pacientes con SLE y
+    controles sanos dentro de cada tipo celular, generados en la lección "Genes
+    diferencialmente expresados entre pacientes y controles"
+    (\href{https://eveliacoss.github.io/GeneExprLupusMx/articles/l3_DEGs_es.html}{l3_DEGs_es}). Punto de partida de la lección
+    de enriquecimiento funcional.
 format:
   original: |
     A named list with three data frames (\code{monocyte}, \code{moDC},
@@ -23,7 +28,19 @@ format:
     \item{padj}{Benjamini-Hochberg adjusted p-value (\code{NA} for genes
     removed by independent filtering).}
     }
-  translation: ~
+  translation: |
+    Descripción de las variables contenidas en los tres data frames (\code{monocyte}, \code{moDC},
+    \code{tolDC}), cada uno con 21,718 filas (genes) y 7 columnas (variables):
+    \describe{
+    \item{gene}{Símbolo del gen.}
+    \item{baseMean}{Expresión normalizada promedio entre las muestras.}
+    \item{log2FoldChange}{Log2 fold change, SLE vs Ctrl.}
+    \item{lfcSE}{Error estándar del log2 fold change.}
+    \item{stat}{Estadístico de Wald.}
+    \item{pvalue}{Valor p de la prueba de Wald.}
+    \item{padj}{Valor p ajustado por Benjamini-Hochberg (\code{NA} para los genes
+    eliminados por el filtrado independiente).}
+    }
 details:
   original: |
     For each cell type: \code{DESeqDataSetFromTximport()} with all genes of
@@ -35,13 +52,26 @@ details:
     37 up / 0 down in monocytes, 4 up / 40 down in moDC and 4 up / 12 down in
     tolDC (94 distinct genes). The script that generates it is
     \code{data-raw/lesson3_checkpoints.R}.
-  translation: ~
+  translation: |
+    Para cada tipo celular: \code{DESeqDataSetFromTximport()} con todos los genes de
+    \code{filtered_txi}, diseño \code{~ Group} (referencia \code{Ctrl}),
+    \code{DESeq()} y \code{results(name = "Group_SLE_vs_Ctrl")} (prueba de Wald,
+    ajuste de Benjamini-Hochberg).
+
+    Con \code{|log2FoldChange| >= 1} y \code{padj < 0.05}:
+    37 sobreexpresados / 0 subexpresados en monocitos, 4 sobreexpresados /
+    40 subexpresados en moDC y 4 sobreexpresados / 12 subexpresados en tolDC
+    (94 genes distintos). El script que lo genera es
+    \code{data-raw/lesson3_checkpoints.R}.
 source:
   original: |
     Generated from \code{\link{filtered_txi}} and \code{\link{metadata_cleaned}}.
-  translation: ~
+  translation: |
+    Generado a partir de \code{\link{filtered_txi}} y \code{\link{metadata_cleaned}}.
 examples:
   original: |
     names(de_results)
     head(de_results$monocyte[order(de_results$monocyte$padj), ])
-  translation: ~
+  translation: |
+    names(de_results)
+    head(de_results$monocyte[order(de_results$monocyte$padj), ])
